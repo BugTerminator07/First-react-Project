@@ -1,16 +1,18 @@
 import React from 'react';
 import './country.css'
 
-const Country = ({ country }) => {
+const Country = ({ country ,handleVisitedCountries}) => {
     const [visited, setVisited] = React.useState(false);
-    const handlevisited=()=>{
-          window.alert(`You have visited ${country.name.common}`);
+    const handleVisited=()=>{
+        //   window.alert(`You have visited ${country.name.common}`);
             // if(visited){
             //     setVisited(false);
             // } else{
             //     setVisited(true);
             // }
-            setVisited(!visited); //same thing as if-else
+            setVisited(!visited); 
+            //same thing as if-else
+                handleVisitedCountries(country);
         }
     return (
         
@@ -20,7 +22,7 @@ const Country = ({ country }) => {
             <p>Official name:{country.name.official}</p>
             <p>Population:{country.population.population}</p>
             <p>Area:{country.area.area} {country.area.area > 300000 ? '(Large Country)' : '(Small Country)'}</p>
-            <button onClick={handlevisited}>{visited?'Visited':'Not visited'}</button>
+            <button onClick={handleVisited}>{visited?'Visited':'Not visited'}</button>
         </div>
     );
 };
